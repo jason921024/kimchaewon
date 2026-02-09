@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>采寶</title>
+
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: normal;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            z-index: 10;
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff6b81;
+        }
+
+        section {
+            margin: 80px auto;
+            max-width: 800px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        img {
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        iframe {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+
+        .date-box {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 6px 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>This is an introduce of Kim Chaewon</h1>
+
+    <!-- 導覽列 -->
+    <nav>
+        <a href="#izone">IZ*ONE 時期</a>
+        <a href="#le_sserafim">LE SSERAFIM 時期</a>
+    </nav>
+
+    <!-- 小團體 -->
+    <section>
+        <h3>采寶小團體</h3>
+        <ul>
+            <li>
+                <a href="https://zh.wikipedia.org/zh-tw/IZ*ONE" target="_blank">IZ*ONE</a>
+            </li>
+            <li>
+                <a href="https://zh.wikipedia.org/zh-tw/LE_SSERAFIM" target="_blank">LE SSERAFIM</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- IZ*ONE -->
+    <section id="izone">
+        <div class="card">
+            <h2>IZ*ONE</h2>
+            <p>采寶在 IZ*ONE 的時候是我寶寶</p>
+            <p>2018年10月29日，以限定女子團體 IZ*ONE 成員正式出道。</p>
+            <p>2021年4月29日，IZ*ONE 正式解散。</p>
+
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/89sl9rx9qNE"
+                title="YouTube video player"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+
+            <br>
+
+            <a href="https://zh.wikipedia.org/zh-tw/IZ*ONE" target="_blank">
+                <img src="chaewon_izone.jpg" alt="chaewon izone" width="240">
+            </a>
+        </div>
+    </section>
+
+    <!-- LE SSERAFIM -->
+    <section id="le_sserafim">
+        <div class="card">
+            <h2>LE SSERAFIM</h2>
+            <p>采寶在拉皮的時候也還是我寶寶</p>
+            <p>2022年3月14日，與 SOURCE MUSIC 簽訂專屬合約。</p>
+            <p>2022年4月7日，正式成為 LE SSERAFIM 成員並擔任隊長。</p>
+
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/CnNJtnoSU5U"
+                title="YouTube video player"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+
+            <br>
+
+            <a href="https://zh.wikipedia.org/zh-tw/%E9%87%91%E9%87%87%E6%BA%90" target="_blank">
+                <img src="chae_pizza.jpg" alt="chaewon pizza" width="240">
+            </a>
+        </div>
+    </section>
+
+    <!-- 生日計算 -->
+    <section class="date-box">
+        <h3>和金采源的年齡差 💗</h3>
+        <p>金采源生日：2000 / 9 / 5</p>
+
+        <input type="date" id="birthday">
+        <button onclick="compareBirthday()">計算</button>
+
+        <p id="result"></p>
+    </section>
+
+    <script>
+        function compareBirthday() {
+            const userDateValue = document.getElementById("birthday").value;
+
+            if (!userDateValue) {
+                document.getElementById("result").innerText = "請先選擇你的生日！";
+                return;
+            }
+
+            // 金采源生日：2000 / 9 / 5（月份要 -1）
+            const chaewonBirthday = new Date(2000, 8, 5);
+            const userBirthday = new Date(userDateValue);
+
+            const oneDay = 1000 * 60 * 60 * 24;
+            const diffDays = Math.floor(
+                (userBirthday - chaewonBirthday) / oneDay
+            );
+
+            let message = "";
+
+            if (diffDays > 0) {
+                message = `你比金采源小 ${diffDays} 天 💕`;
+            } else if (diffDays < 0) {
+                message = `你比金采源大 ${Math.abs(diffDays)} 天 ✨`;
+            } else {
+                message = "你和金采源是同一天出生的！！🎉";
+            }
+
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+
+</body>
+</html>
